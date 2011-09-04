@@ -1,0 +1,47 @@
+﻿@model SampleCalendar.Models.HolidaysListViewModel
+@{
+    ViewBag.Title = "Holidays";
+}
+
+<h2>Holidays</h2>
+
+<p>
+    Change Culture
+</p>
+@using (Html.BeginForm()) { 
+     @Html.ValidationSummary(true)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Year)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.Year, new SelectList(Model.Years))
+        @Html.ValidationMessageFor(model => model.Year)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Culture)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.Culture, new SelectList(Model.Cultures))
+        @Html.ValidationMessageFor(model => model.Culture)
+    </div>
+    <p>
+        <input type="submit" value="Change" />
+    </p>
+}
+
+<p>
+    Holidays
+</p>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Name</th>
+    </tr>
+    @foreach (var holiday in Model.Holidays) { 
+        <tr>
+            <td>@holiday.Day</td>
+            <td>@holiday.Name</td>
+        </tr>
+    }
+</table>
+

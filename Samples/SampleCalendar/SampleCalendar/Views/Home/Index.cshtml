@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<div id="calendar"></div>
+
+<script type="text/javascript">
+    $("#calendar").datepicker({
+        numberOfMonths: [4, 3],
+        changeYear: false,
+        changeMonth: false,
+        defaultDate: "11-01-01"
+        });
+</script>
