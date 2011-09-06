@@ -1,0 +1,40 @@
+﻿@model SampleCalendar.Models.TestWorkingDayViewModel
+@using (Ajax.BeginForm("TestWorkingDay", new AjaxOptions{ HttpMethod="POST", InsertionMode= System.Web.Mvc.Ajax.InsertionMode.Replace, UpdateTargetId="test-date" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>TestWorkingDayViewModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TestDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TestDate)
+            @Html.ValidationMessageFor(model => model.TestDate)
+        </div>
+
+        <div class="display-label">
+            @Html.LabelFor(model => model.IsWorkingDay)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IsWorkingDay)
+        </div>
+
+        <div class="display-label">
+            @Html.LabelFor(model => model.NextWorkingDay)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NextWorkingDay)
+        </div>
+
+        <div class="display-label">
+            @Html.LabelFor(model => model.FifthWorkingDay)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FifthWorkingDay)
+        </div>
+
+        <p>
+            <input type="submit" value="Test" />
+        </p>
+    </fieldset>
+}

@@ -22,11 +22,11 @@
         @Html.ValidationMessageFor(model => model.AddHoliday.Day)
     </div>
     <input type="submit" value="Add" />
-    
-       
-   
 }
 <div id="holidayList">
      @{Html.RenderPartial("HolidayList", Model.Holidays);}
  </div>
 
+<div id="test-date">
+    @{Html.RenderAction("TestWorkingDay");}
+</div>
