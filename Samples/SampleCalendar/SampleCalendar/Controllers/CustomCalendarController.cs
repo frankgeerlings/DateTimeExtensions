@@ -5,14 +5,24 @@ using System.Web;
 using System.Web.Mvc;
 using SampleCalendar.Models;
 
+using DateTimeExtensions;
+using SampleCalendar.Services;
+
 namespace SampleCalendar.Controllers
 {
     public class CustomCalendarController : Controller
     {
-		IList<HolidayDTO> holidays;
 
-		public CustomCalendarController() : base() {
-			holidays = new List<HolidayDTO>();
+		//poor man's persistence
+		private IList<HolidayDTO> Holidays{
+			get{
+				IList<HolidayDTO> holidays = (IList<HolidayDTO>)HttpContext.Session["holidays"];
+				if (holidays == null) {
+					holidays = new List<HolidayDTO>();
+					HttpContext.Session["holidays"] = holidays;
+				}
+				return holidays;
+			}
 		}
 
         //
@@ -22,15 +32,35 @@ namespace SampleCalendar.Controllers
         {
 			var model = new CustomCalendarViewModel() {
 				AddHoliday = new HolidayDTO(),
-				Holidays = holidays
+				Holidays = Holidays
 			};
 			return View(model);
         }
 
 		[HttpPost]
 		public ActionResult AddHoliday(CustomCalendarViewModel newHoliday) {
-			holidays.Add(newHoliday.AddHoliday);
-			return PartialView("HolidayList", holidays);
+			Holidays.Add(newHoliday.AddHoliday);
+			return PartialView("HolidayList", Holidays);
+		}
+
+		public ActionResult TestWorkingDay() {
+			return TestWorkingDay(new TestWorkingDayViewModel { TestDate = DateTime.Now });
+		}
+
+		[HttpPost]
+		public ActionResult TestWorkingDay(TestWorkingDayViewModel model) {
+			if (!ModelState.IsValid)
+				return PartialView(model);
+
+			var listWorkingDayCultureInfo = new WorkingDayCultureInfo {
+				LocateHolidayStrategy = (name) => new ListHolidayStrategy(Holidays)
+			};
+
+			var date = model.TestDate;
+			model.IsWorkingDay = date.IsWorkingDay(listWorkingDayCultureInfo);
+			model.NextWorkingDay = date.AddWorkingDays(1, listWorkingDayCultureInfo);
+			model.FifthWorkingDay = date.AddWorkingDays(5, listWorkingDayCultureInfo);
+			return PartialView(model);
 		}
     }
 }
