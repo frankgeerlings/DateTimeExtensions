@@ -31,7 +31,7 @@ namespace SampleCalendar.Controllers
         public ActionResult Index()
         {
 			var model = new CustomCalendarViewModel() {
-				AddHoliday = new HolidayDTO(),
+				AddHoliday = new HolidayDTO { Day = DateTime.Today },
 				Holidays = Holidays
 			};
 			return View(model);

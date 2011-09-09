@@ -3,30 +3,47 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-@using (Ajax.BeginForm("AddHoliday", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "holidayList" })) {
-    @Html.ValidationSummary(true)
-    <div class="editor-label">
-        @Html.LabelFor(model => model.AddHoliday.Name)
+<div id="left-col">
+    <div class="box">
+        <h4>Date Test</h4>
+        <div class="box-container">
+            <div id="test-date">
+                @{Html.RenderAction("TestWorkingDay");}
+            </div>
+        </div>
     </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.AddHoliday.Name)
-        @Html.ValidationMessageFor(model => model.AddHoliday.Name)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.AddHoliday.Day)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.AddHoliday.Day)
-        @Html.ValidationMessageFor(model => model.AddHoliday.Day)
-    </div>
-    <input type="submit" value="Add" />
-}
-<div id="holidayList">
-     @{Html.RenderPartial("HolidayList", Model.Holidays);}
- </div>
-
-<div id="test-date">
-    @{Html.RenderAction("TestWorkingDay");}
 </div>
+
+<div id="mid-right-col">
+
+    <div class="box">
+        <h4>Holiday List</h4>
+        <div class="box-container">
+
+            @using (Ajax.BeginForm("AddHoliday", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "holidayList" })) {
+            @Html.ValidationSummary(true)
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AddHoliday.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.AddHoliday.Name)
+                @Html.ValidationMessageFor(model => model.AddHoliday.Name)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AddHoliday.Day)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.AddHoliday.Day)
+                @Html.ValidationMessageFor(model => model.AddHoliday.Day)
+            </div>
+            <input type="submit" value="Add" />
+        }
+
+        <div id="holidayList">
+             @{Html.RenderPartial("HolidayList", Model.Holidays);}
+        </div>
+
+    </div>
+
+</div>
+
