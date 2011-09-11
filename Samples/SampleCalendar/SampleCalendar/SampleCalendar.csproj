@@ -68,6 +68,7 @@
     <Compile Include="Controllers\CustomCalendarController.cs" />
     <Compile Include="Controllers\HolidaysController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\HtmlLabelExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -79,6 +80,15 @@
     <Compile Include="Services\ListHolidayStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\bg-body.gif" />
+    <Content Include="Content\images\bg-buttons-left.gif" />
+    <Content Include="Content\images\bg-buttons-right.gif" />
+    <Content Include="Content\images\bg-textbox.gif" />
+    <Content Include="Content\images\bg-topnav-mask.gif" />
+    <Content Include="Content\images\bg_tableRow.gif" />
+    <Content Include="Content\images\icon-calendar.gif" />
+    <Content Include="Content\images\icon-delete.gif" />
+    <Content Include="Content\images\icon-edit.gif" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -167,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

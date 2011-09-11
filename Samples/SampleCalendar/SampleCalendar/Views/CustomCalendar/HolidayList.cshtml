@@ -1,29 +1,28 @@
 ﻿@model IEnumerable<SampleCalendar.Models.HolidayDTO>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            Day
-        </th>
-        <th>
-            Name
-        </th>
-        <th></th>
-    </tr>
-
+<h3>Holiday List</h3>
+<table class="table-long">
+    <thead>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                Day
+            </td>
+            <td></td>
+        </tr>
+    </thead>
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Day)
-        </td>
-        <td>
+        <td class="col-main">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td class="row-nav">
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "table-delete-link" })
         </td>
     </tr>
 }

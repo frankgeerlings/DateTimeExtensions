@@ -1,40 +1,43 @@
 ﻿@model SampleCalendar.Models.TestWorkingDayViewModel
-@using (Ajax.BeginForm("TestWorkingDay", new AjaxOptions{ HttpMethod="POST", InsertionMode= System.Web.Mvc.Ajax.InsertionMode.Replace, UpdateTargetId="test-date" })) {
+@using SampleCalendar.Extensions;
+@using (Ajax.BeginForm("TestWorkingDay", null, new AjaxOptions { HttpMethod = "POST", InsertionMode = System.Web.Mvc.Ajax.InsertionMode.Replace, UpdateTargetId = "test-date" }, new { @class = "middle-forms" })) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>TestWorkingDayViewModel</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TestDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TestDate)
-            @Html.ValidationMessageFor(model => model.TestDate)
-        </div>
+        <ol>
+            <li>
+                @Html.LabelFor(model => model.TestDate, new { @class = "field-title"} )
+                @Html.EditorFor(model => model.TestDate)
+                @Html.ValidationMessageFor(model => model.TestDate)
+                <input type="submit" value="Test" />
+            </li>
+        
+            <li>
+                @Html.LabelFor(model => model.IsWorkingDay, new { @class = "field-title" })
+                @Html.DisplayFor(model => model.IsWorkingDay)
+            </li>
 
-        <div class="display-label">
-            @Html.LabelFor(model => model.IsWorkingDay)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.IsWorkingDay)
-        </div>
+            <li>
+                @Html.LabelFor(model => model.NextWorkingDay, new { @class = "field-title" })
+                @Html.DisplayFor(model => model.NextWorkingDay)
+            </li>
 
-        <div class="display-label">
-            @Html.LabelFor(model => model.NextWorkingDay)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.NextWorkingDay)
-        </div>
+            <li>
+                @Html.LabelFor(model => model.FifthWorkingDay, new { @class = "field-title" })
+                @Html.DisplayFor(model => model.FifthWorkingDay)
+            </li>
+        </ol>
 
-        <div class="display-label">
-            @Html.LabelFor(model => model.FifthWorkingDay)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.FifthWorkingDay)
-        </div>
-
-        <p>
-            <input type="submit" value="Test" />
-        </p>
     </fieldset>
 }
+ <script type="text/javascript">
+     $(document).ready(function () {
+         $(".datepicker").datepicker({
+             changeMonth: true,
+             changeYear: true,
+             dateFormat: 'dd-mm-yy',
+             buttonImage: '/Content/images/icon-calendar.gif'
+         });
+     });
+  </script>

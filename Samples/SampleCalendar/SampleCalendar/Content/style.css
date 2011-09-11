@@ -150,32 +150,24 @@ div#content {padding-top:25px;}
 	ul.tab-menu li a {display:inline-block; background:#737d81; color:#ccc; font-weight:normal; padding:6px 10px; text-transform:uppercase; text-decoration:none;}
 	.tabs-hide {display:none;}
 	
-	div#to-do-list ul {margin-top:-10px;}
-	div#to-do-list ul li {border-bottom:1px solid #eeeddb; padding:8px 10px;}
-	div#to-do-list ul li.even {background:#f5f4eb;}
-	div#to-do-list ul li.odd {background:#fbfbf7;}
-	div#to-do-list ul li a {font-weight:bold; color:#ae9a62;}
-	div#to-do-list ul li a:hover {color:#666; text-decoration:none;}
-	div#to-do-list ul li small {display:block; padding:5px 0 0 24px; font-size:0.9em; color:#999;}
-	
 	/** forms **/
-	form.middle-forms {padding:5px; color:#3a4043}
-	form.middle-forms p {margin:10px 0;}
-	form.middle-forms h3 {color:#1d8895; font-weight:bold; font-size:150%; margin-bottom:10px;}
+	form {padding:5px; color:#3a4043}
+	form p {margin:10px 0;}
+	h3 {color:#1d8895; font-weight:bold; font-size:150%; margin-bottom:10px;}
 	
-	form.middle-forms fieldset {padding-top:10px;}
-	form.middle-forms fieldset ol li {padding:15px;}
-	form.middle-forms fieldset ol li.even {background:#f3f3f3;}
+	/*form.middle-forms fieldset {padding-top:10px;}*/
+	form.middle-forms fieldset ol li {padding:5px;}
+    
+	fieldset ol li.even {background:#f3f3f3;}
 	
-	form.middle-forms fieldset ol li input/*,form.middle-forms fieldset ol li textarea*/ {
-	padding:5px; border:1px solid #dedede; background:url(images/bg-textbox.gif) repeat-x #fff;}
+	form.middle-forms fieldset ol li input[type="text"] {padding:5px; border:1px solid #dedede;}
 	form.middle-forms fieldset ol li input[type="radio"], form.middle-forms fieldset ol li input[type="checkbox"] {border:none; background:none;}
 	input.txtbox-short {width:122px;}
 	input.txtbox-middle {width:190px;}
 	input.txtbox-long, form.middle-forms fieldset ol li textarea {width:305px;}
 	
-	form.middle-forms fieldset ol li label {float:left; margin-right:15px; display:block;}
-	form.middle-forms fieldset ol li label.field-title {font-weight:bold; width:100px; padding-top:3px;}
+	fieldset ol li label {float:left; margin-right:15px; display:block;}
+	fieldset ol li label.field-title {font-weight:bold; width:100px; padding-top:3px;}
 	
 	
 	span.form-confirm-inline, span.form-error-inline {display:inline-block; padding-left:20px;  margin-left:10px; height:16px;}
@@ -197,9 +189,7 @@ div#content {padding-top:25px;}
 	table.table-short tr.odd, table.table-long tr.odd {	background:url(images/bg_tableRow.gif) repeat-x 0px 1px;	}
 	
 	td.col-chk {width:40px;}
-	td.col-first {font-weight:bold; width:200px;}
-	td.col-second a {color:#508db8; font-weight:bold;}
-	td.col-second a:hover {text-decoration:none; color:#333;}
+	td.col-main {font-weight:bold; width:200px;}
 	
 	td.row-nav {width:110px;}
 	a.table-edit-link, a.table-delete-link {color:#666; text-decoration:none; display:inline-block; margin-right:10px; padding-left:20px; height:16px; text-align:right;}
